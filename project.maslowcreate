@@ -6,18 +6,34 @@
     "uniqueID": 397911,
     "ioValues": [
         {
-            "name": "name",
+            "name": "shape",
+            "ioValue": 10
+        },
+        {
+            "name": "count",
+            "ioValue": 10
+        },
+        {
+            "name": "radius",
             "ioValue": 10
         }
     ],
     "topLevel": true,
     "allAtoms": [
         {
-            "atomType": "Output",
-            "name": "Output",
-            "x": 0.98,
-            "y": 0.5,
-            "uniqueID": 523099,
+            "atomType": "Input",
+            "name": "shape",
+            "x": 0.013333333333333334,
+            "y": 0.34169278996865204,
+            "uniqueID": 540620,
+            "ioValues": []
+        },
+        {
+            "atomType": "Input",
+            "name": "count",
+            "x": 0.013333333333333334,
+            "y": 0.47648902821316613,
+            "uniqueID": 744449,
             "ioValues": []
         },
         {
@@ -27,10 +43,6 @@
             "y": 0.4670846394984326,
             "uniqueID": 483499,
             "ioValues": [
-                {
-                    "name": "Input2",
-                    "ioValue": 10
-                },
                 {
                     "name": "geometry1",
                     "ioValue": 10
@@ -47,23 +59,57 @@
             "code": "//Inputs:[geometry1, count, radius]\n\n\n const polarCopies = (shape, count, radius) => {\n      const base = shape.clone().translate(0, radius);\n      const angle = 360 / count;\n      const copies = [];\n      for (let i = 0; i < count; i++) {\n        copies.push(base.clone().rotate(i * angle));\n      }\n      let fusedPattern = chainFuse(copies);\n      return fusedPattern;\n    };\n   \n  \nlet result = polarCopies(library[geometry1].geometry[0],count, radius)\nreturn [result]"
         },
         {
-            "atomType": "Input",
-            "name": "name",
-            "x": 0.013333333333333334,
-            "y": 0.4137931034482759,
-            "uniqueID": 380343,
-            "ioValues": []
+            "atomType": "Output",
+            "name": "Output",
+            "x": 0.98,
+            "y": 0.5,
+            "uniqueID": 523099,
+            "ioValues": [
+                {
+                    "name": "number or geometry",
+                    "ioValue": ""
+                }
+            ]
         },
         {
             "atomType": "Input",
-            "name": "name",
+            "name": "radius",
             "x": 0.013333333333333334,
-            "y": 0.6300940438871473,
-            "uniqueID": 662074,
+            "y": 0.7523510971786834,
+            "uniqueID": 368635,
             "ioValues": []
         }
     ],
-    "allConnectors": [],
+    "allConnectors": [
+        {
+            "ap1Name": "number or geometry",
+            "ap2Name": "geometry1",
+            "ap2Primary": false,
+            "ap1ID": 540620,
+            "ap2ID": 483499
+        },
+        {
+            "ap1Name": "number or geometry",
+            "ap2Name": "count",
+            "ap2Primary": false,
+            "ap1ID": 744449,
+            "ap2ID": 483499
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "number or geometry",
+            "ap2Primary": false,
+            "ap1ID": 483499,
+            "ap2ID": 523099
+        },
+        {
+            "ap1Name": "number or geometry",
+            "ap2Name": "radius",
+            "ap2Primary": false,
+            "ap1ID": 368635,
+            "ap2ID": 483499
+        }
+    ],
     "fileTypeVersion": 1,
     "unitsIndex": 0,
     "filetypeVersion": 1
