@@ -4,9 +4,65 @@
     "x": 0,
     "y": 0,
     "uniqueID": 397911,
-    "ioValues": [],
+    "ioValues": [
+        {
+            "name": "name",
+            "ioValue": 10
+        }
+    ],
     "topLevel": true,
-    "allAtoms": [],
+    "allAtoms": [
+        {
+            "atomType": "Output",
+            "name": "Output",
+            "x": 0.98,
+            "y": 0.5,
+            "uniqueID": 523099,
+            "ioValues": []
+        },
+        {
+            "atomType": "Code",
+            "name": "Code",
+            "x": 0.46849942726231386,
+            "y": 0.4670846394984326,
+            "uniqueID": 483499,
+            "ioValues": [
+                {
+                    "name": "Input2",
+                    "ioValue": 10
+                },
+                {
+                    "name": "geometry1",
+                    "ioValue": 10
+                },
+                {
+                    "name": "count",
+                    "ioValue": 10
+                },
+                {
+                    "name": "radius",
+                    "ioValue": 10
+                }
+            ],
+            "code": "//Inputs:[geometry1, count, radius]\n\n\n const polarCopies = (shape, count, radius) => {\n      const base = shape.clone().translate(0, radius);\n      const angle = 360 / count;\n      const copies = [];\n      for (let i = 0; i < count; i++) {\n        copies.push(base.clone().rotate(i * angle));\n      }\n      let fusedPattern = chainFuse(copies);\n      return fusedPattern;\n    };\n   \n  \nlet result = polarCopies(library[geometry1].geometry[0],count, radius)\nreturn [result]"
+        },
+        {
+            "atomType": "Input",
+            "name": "name",
+            "x": 0.013333333333333334,
+            "y": 0.4137931034482759,
+            "uniqueID": 380343,
+            "ioValues": []
+        },
+        {
+            "atomType": "Input",
+            "name": "name",
+            "x": 0.013333333333333334,
+            "y": 0.6300940438871473,
+            "uniqueID": 662074,
+            "ioValues": []
+        }
+    ],
     "allConnectors": [],
     "fileTypeVersion": 1,
     "unitsIndex": 0,
