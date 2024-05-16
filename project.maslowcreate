@@ -73,7 +73,7 @@
             "y": 0.64576802507837,
             "uniqueID": 1715885965807,
             "ioValues": [],
-            "readmeText": "Circular-Pattern\n\nTopics : maslowcreate, maslowcreate-project, maslowcreate-action\nGitHub Repo : https://github.com/alzatin/Circular-Pattern\n\n@input {geometry} Shape - Replicad Geometry\n@input {number} Count - Number of times geometry will be repeated\n@input {number} Radius- Radius of circle around which the pattern will be created\n\n - Might update it to include assemblies and sketches.\n",
+            "readmeText": "Circular-Pattern\n\nTopics : maslowcreate, maslowcreate-project, maslowcreate-action\nGitHub Repo : https://github.com/alzatin/Circular-Pattern\n\n@input {geometry} Shape - Replicad Geometry\n@input {number} Count - Number of times geometry will be repeated\n@input {number} Radius- Radius of circle around which the pattern will be created\n\n - Might update it to include assemblies and sketches.\n\n",
             "global": true
         },
         {
