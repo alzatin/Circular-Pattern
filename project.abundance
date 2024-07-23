@@ -39,8 +39,8 @@
         {
             "atomType": "Code",
             "name": "Code",
-            "x": 0.5994180407371484,
-            "y": 0.2852664576802508,
+            "x": 0.47817460317460314,
+            "y": 0.5167173252279635,
             "uniqueID": 483499,
             "ioValues": [
                 {
@@ -56,6 +56,7 @@
                     "ioValue": 10
                 }
             ],
+            "codeVersion": 1,
             "code": "//Inputs:[geometry1, count, radius]\n\n\n const polarCopies = (shape, count, radius) => {\n      const base = shape.clone().translate(0, radius);\n      const angle = 360 / count;\n      const copies = [];\n      for (let i = 0; i < count; i++) {\n        copies.push(base.clone().rotate(i * angle));\n      }\n      let fusedPattern = chainFuse(copies);\n      return fusedPattern;\n    };\n   \n  \nlet result = polarCopies(library[geometry1].geometry[0],count, radius)\nreturn [result]"
         },
         {
@@ -85,32 +86,10 @@
             "ioValues": []
         },
         {
-            "atomType": "Code",
-            "name": "Code",
-            "x": 0.6149369544131911,
-            "y": 0.7053291536050157,
-            "uniqueID": 1718566632418,
-            "ioValues": [
-                {
-                    "name": "geometry1",
-                    "ioValue": 1718566662498
-                },
-                {
-                    "name": "count",
-                    "ioValue": 10
-                },
-                {
-                    "name": "radius",
-                    "ioValue": 10
-                }
-            ],
-            "code": "//Inputs:[geometry1, count, radius]\n\n\n const polarCopies = (shape, count, radius) => {\n      const base = shape.clone().translate(0, radius);\n      const angle = 360 / count;\n      const copies = [];\n      for (let i = 0; i < count; i++) {\n        copies.push(base.clone().rotate(i * angle));\n      }\n      let fusedPattern = chainFuse(copies);\n      return fusedPattern;\n    };\n   \n  \nlet result = polarCopies(library[geometry1].geometry[0],count, radius)\nreturn [result]"
-        },
-        {
             "atomType": "Circle",
             "name": "Circle",
-            "x": 0.36081474296799226,
-            "y": 0.6112852664576802,
+            "x": 0.32275132275132273,
+            "y": 0.7933130699088146,
             "uniqueID": 1718566662498,
             "ioValues": [
                 {
@@ -148,16 +127,9 @@
             "ap2Primary": false,
             "ap1ID": 368635,
             "ap2ID": 483499
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry1",
-            "ap2Primary": false,
-            "ap1ID": 1718566662498,
-            "ap2ID": 1718566632418
         }
     ],
-    "unitsIndex": 0,
     "fileTypeVersion": 1,
+    "compiledBom": {},
     "filetypeVersion": 1
 }
