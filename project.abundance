@@ -11,11 +11,11 @@
         },
         {
             "name": "count",
-            "ioValue": 10
+            "ioValue": 3
         },
         {
             "name": "radius",
-            "ioValue": 10
+            "ioValue": 13
         }
     ],
     "topLevel": true,
@@ -39,25 +39,29 @@
         {
             "atomType": "Code",
             "name": "Code",
-            "x": 0.47817460317460314,
-            "y": 0.5167173252279635,
+            "x": 0.5311601150527324,
+            "y": 0.39817629179331304,
             "uniqueID": 483499,
             "ioValues": [
                 {
-                    "name": "geometry1",
+                    "name": "count",
+                    "ioValue": 3
+                },
+                {
+                    "name": "inputID",
                     "ioValue": 10
                 },
                 {
-                    "name": "count",
-                    "ioValue": 10
+                    "name": "backUpShape",
+                    "ioValue": 1721752212012
                 },
                 {
                     "name": "radius",
-                    "ioValue": 10
+                    "ioValue": 13
                 }
             ],
             "codeVersion": 1,
-            "code": "//Inputs:[geometry1, count, radius]\n\n\n const polarCopies = (shape, count, radius) => {\n      const base = shape.clone().translate(0, radius);\n      const angle = 360 / count;\n      const copies = [];\n      for (let i = 0; i < count; i++) {\n        copies.push(base.clone().rotate(i * angle));\n      }\n      let fusedPattern = chainFuse(copies);\n      return fusedPattern;\n    };\n   \n  \nlet result = polarCopies(library[geometry1].geometry[0],count, radius)\nreturn [result]"
+            "code": "// Circular Pattern\n//Inputs:[inputID, count, radius, backUpShape]\n\nconst bomAssembly = [];\n\nconst polarCopies = (shape, count, radius) => {\n  const copies = [];\n  const angle = 360 / count;\n\n  for (let i = 0; i < count; i++) {\n    copies.push(\n      actOnLeafs(shape, (leaf) => {\n        const base = leaf.geometry[0].clone().translate(0, radius);\n        return {\n          geometry: [base.clone().rotate(i * angle)],\n          tags: leaf.tags,\n          plane: leaf.plane,\n          color: leaf.color,\n          bom: leaf.bom,\n        };\n      })\n    );\n\n    if (shape.bom.length > 0) {\n      bomAssembly.push(...shape.bom);\n    }\n  }\n  let copyAssembly = copies;\n  return copyAssembly;\n};\n\nreturn started.then(() => {\n  if (inputID !== 10) {\n    library[targetID] = {\n      geometry: polarCopies(library[inputID], count, radius),\n      tags: [],\n      plane: library[inputID].plane,\n      color: library[inputID].color,\n      bom: bomAssembly,\n    };\n  } else {\n    //faulty input\n    library[targetID] = {\n      geometry: polarCopies(library[backUpShape], count, radius),\n      tags: [],\n      plane: library[backUpShape].plane,\n      color: library[backUpShape].color,\n      bom: bomAssembly,\n    };\n  }\n  return library[targetID];\n});\n"
         },
         {
             "atomType": "Input",
@@ -83,13 +87,18 @@
             "x": 0.98,
             "y": 0.5,
             "uniqueID": 523099,
-            "ioValues": []
+            "ioValues": [
+                {
+                    "name": "number or geometry",
+                    "ioValue": 483499
+                }
+            ]
         },
         {
             "atomType": "Circle",
             "name": "Circle",
-            "x": 0.32275132275132273,
-            "y": 0.7933130699088146,
+            "x": 0.17641418983700863,
+            "y": 0.7720364741641338,
             "uniqueID": 1718566662498,
             "ioValues": [
                 {
@@ -97,12 +106,55 @@
                     "ioValue": 10
                 }
             ]
+        },
+        {
+            "atomType": "Join",
+            "name": "Assembly",
+            "x": 0.4448705656759348,
+            "y": 0.7173252279635258,
+            "uniqueID": 1721752212012,
+            "ioValues": [
+                {
+                    "name": "3D shape 1",
+                    "ioValue": 1718566662498
+                },
+                {
+                    "name": "3D shape 2",
+                    "ioValue": 1721752221647
+                }
+            ],
+            "unionType": "Assembly"
+        },
+        {
+            "atomType": "Move",
+            "name": "Move",
+            "x": 0.3211888782358581,
+            "y": 0.8875379939209727,
+            "uniqueID": 1721752221647,
+            "ioValues": [
+                {
+                    "name": "geometry",
+                    "ioValue": 1718566662498
+                },
+                {
+                    "name": "xDist",
+                    "ioValue": 5
+                },
+                {
+                    "name": "yDist",
+                    "ioValue": 0
+                },
+                {
+                    "name": "zDist",
+                    "ioValue": 0
+                }
+            ]
         }
     ],
     "allConnectors": [
         {
             "ap1Name": "number or geometry",
-            "ap2Name": "geometry1",
+            "ap2Name": "inputID",
             "ap2Primary": false,
             "ap1ID": 540620,
             "ap2ID": 483499
@@ -121,15 +173,44 @@
             "ap1ID": 483499,
             "ap2ID": 523099
         },
+        null,
         {
             "ap1Name": "number or geometry",
             "ap2Name": "radius",
             "ap2Primary": false,
             "ap1ID": 368635,
             "ap2ID": 483499
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "3D shape 1",
+            "ap2Primary": false,
+            "ap1ID": 1718566662498,
+            "ap2ID": 1721752212012
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "geometry",
+            "ap2Primary": true,
+            "ap1ID": 1718566662498,
+            "ap2ID": 1721752221647
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "backUpShape",
+            "ap2Primary": false,
+            "ap1ID": 1721752212012,
+            "ap2ID": 483499
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "3D shape 2",
+            "ap2Primary": false,
+            "ap1ID": 1721752221647,
+            "ap2ID": 1721752212012
         }
     ],
     "fileTypeVersion": 1,
-    "compiledBom": {},
+    "compiledBom": [],
     "filetypeVersion": 1
 }
