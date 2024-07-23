@@ -11,7 +11,7 @@
         },
         {
             "name": "count",
-            "ioValue": 3
+            "ioValue": 6
         },
         {
             "name": "radius",
@@ -45,7 +45,7 @@
             "ioValues": [
                 {
                     "name": "count",
-                    "ioValue": 3
+                    "ioValue": 6
                 },
                 {
                     "name": "inputID",
@@ -97,8 +97,8 @@
         {
             "atomType": "Circle",
             "name": "Circle",
-            "x": 0.17641418983700863,
-            "y": 0.7720364741641338,
+            "x": 0.22435282837967402,
+            "y": 0.7689969604863222,
             "uniqueID": 1718566662498,
             "ioValues": [
                 {
@@ -117,38 +117,9 @@
                 {
                     "name": "3D shape 1",
                     "ioValue": 1718566662498
-                },
-                {
-                    "name": "3D shape 2",
-                    "ioValue": 1721752221647
                 }
             ],
             "unionType": "Assembly"
-        },
-        {
-            "atomType": "Move",
-            "name": "Move",
-            "x": 0.3211888782358581,
-            "y": 0.8875379939209727,
-            "uniqueID": 1721752221647,
-            "ioValues": [
-                {
-                    "name": "geometry",
-                    "ioValue": 1718566662498
-                },
-                {
-                    "name": "xDist",
-                    "ioValue": 5
-                },
-                {
-                    "name": "yDist",
-                    "ioValue": 0
-                },
-                {
-                    "name": "zDist",
-                    "ioValue": 0
-                }
-            ]
         }
     ],
     "allConnectors": [
@@ -173,7 +144,6 @@
             "ap1ID": 483499,
             "ap2ID": 523099
         },
-        null,
         {
             "ap1Name": "number or geometry",
             "ap2Name": "radius",
@@ -190,24 +160,10 @@
         },
         {
             "ap1Name": "geometry",
-            "ap2Name": "geometry",
-            "ap2Primary": true,
-            "ap1ID": 1718566662498,
-            "ap2ID": 1721752221647
-        },
-        {
-            "ap1Name": "geometry",
             "ap2Name": "backUpShape",
             "ap2Primary": false,
             "ap1ID": 1721752212012,
             "ap2ID": 483499
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "3D shape 2",
-            "ap2Primary": false,
-            "ap1ID": 1721752221647,
-            "ap2ID": 1721752212012
         }
     ],
     "fileTypeVersion": 1,
