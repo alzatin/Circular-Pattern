@@ -120,6 +120,91 @@
                 }
             ],
             "unionType": "Assembly"
+        },
+        {
+            "atomType": "Molecule",
+            "name": "Molecule",
+            "x": 0.4057724957555178,
+            "y": 0.24620060790273554,
+            "uniqueID": 1722011137108,
+            "ioValues": [
+                {
+                    "name": "shape",
+                    "ioValue": 10
+                },
+                {
+                    "name": "count",
+                    "ioValue": 10
+                },
+                {
+                    "name": "radius",
+                    "ioValue": 10
+                }
+            ],
+            "topLevel": false,
+            "allAtoms": [
+                {
+                    "atomType": "Output",
+                    "name": "Output",
+                    "x": 0.98,
+                    "y": 0.5,
+                    "uniqueID": 1722011136792,
+                    "ioValues": [
+                        {
+                            "name": "number or geometry",
+                            "ioValue": 1722011140724
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Input",
+                    "name": "shape",
+                    "x": 0.013333333333333334,
+                    "y": 0.34169278996865204,
+                    "uniqueID": 1722011136889,
+                    "ioValues": []
+                },
+                {
+                    "atomType": "Input",
+                    "name": "count",
+                    "x": 0.013333333333333334,
+                    "y": 0.47648902821316613,
+                    "uniqueID": 1722011137224,
+                    "ioValues": []
+                },
+                {
+                    "atomType": "Input",
+                    "name": "radius",
+                    "x": 0.013333333333333334,
+                    "y": 0.7523510971786834,
+                    "uniqueID": 1722011137085,
+                    "ioValues": []
+                },
+                {
+                    "atomType": "Circle",
+                    "name": "Circle",
+                    "x": 0.37181663837011886,
+                    "y": 0.5045592705167173,
+                    "uniqueID": 1722011140724,
+                    "ioValues": [
+                        {
+                            "name": "diameter",
+                            "ioValue": 10
+                        }
+                    ]
+                }
+            ],
+            "allConnectors": [
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "number or geometry",
+                    "ap2Primary": false,
+                    "ap1ID": 1722011140724,
+                    "ap2ID": 1722011136792
+                }
+            ],
+            "fileTypeVersion": 1,
+            "compiledBom": []
         }
     ],
     "allConnectors": [
