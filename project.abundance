@@ -1,256 +1,73 @@
 {
     "atomType": "Molecule",
-    "name": "Circular Pattern",
+    "name": "A-metric-test-project",
     "x": 0,
     "y": 0,
-    "uniqueID": 397911,
-    "ioValues": [
-        {
-            "name": "shape",
-            "ioValue": 10
-        },
-        {
-            "name": "count",
-            "ioValue": 6
-        },
-        {
-            "name": "radius",
-            "ioValue": 13
-        }
-    ],
+    "uniqueID": 1720547265332,
+    "ioValues": [],
     "topLevel": true,
     "allAtoms": [
-        {
-            "atomType": "Input",
-            "name": "shape",
-            "x": 0.013333333333333334,
-            "y": 0.34169278996865204,
-            "uniqueID": 540620,
-            "ioValues": []
-        },
-        {
-            "atomType": "Input",
-            "name": "count",
-            "x": 0.013333333333333334,
-            "y": 0.47648902821316613,
-            "uniqueID": 744449,
-            "ioValues": []
-        },
-        {
-            "atomType": "Code",
-            "name": "Code",
-            "x": 0.7266553480475382,
-            "y": 0.3890577507598784,
-            "uniqueID": 483499,
-            "ioValues": [
-                {
-                    "name": "inputID",
-                    "ioValue": 10
-                },
-                {
-                    "name": "count",
-                    "ioValue": 10
-                },
-                {
-                    "name": "radius",
-                    "ioValue": 10
-                },
-                {
-                    "name": "backUpShape",
-                    "ioValue": 1721752212012
-                }
-            ],
-            "codeVersion": 1,
-            "code": "// Circular Pattern\n//Inputs:[inputID, count, radius, backUpShape]\n\nconst bomAssembly = [];\n\nconst polarCopies = (shape, count, radius) => {\n  const copies = [];\n  const angle = 360 / count;\n\n  for (let i = 0; i < count; i++) {\n    copies.push(\n      actOnLeafs(shape, (leaf) => {\n        const base = leaf.geometry[0].clone().translate(0, radius);\n        return {\n          geometry: [base.clone().rotate(i * angle)],\n          tags: leaf.tags,\n          plane: leaf.plane,\n          color: leaf.color,\n          bom: leaf.bom,\n        };\n      })\n    );\n\n    if (shape.bom.length > 0) {\n      bomAssembly.push(...shape.bom);\n    }\n  }\n  let copyAssembly = copies;\n  return copyAssembly;\n};\n\nreturn started.then(() => {\n  if (inputID !== 10) {\n    library[targetID] = {\n      geometry: polarCopies(library[inputID], count, radius),\n      tags: [],\n      plane: library[inputID].plane,\n      color: library[inputID].color,\n      bom: bomAssembly,\n    };\n  } else {\n    //faulty input\n    library[targetID] = {\n      geometry: polarCopies(library[backUpShape], count, radius),\n      tags: [],\n      plane: library[backUpShape].plane,\n      color: library[backUpShape].color,\n      bom: bomAssembly,\n    };\n  }\n  return library[targetID];\n});\n"
-        },
-        {
-            "atomType": "Input",
-            "name": "radius",
-            "x": 0.013333333333333334,
-            "y": 0.7523510971786834,
-            "uniqueID": 368635,
-            "ioValues": []
-        },
-        {
-            "atomType": "Readme",
-            "name": "README",
-            "x": 0.8011639185257031,
-            "y": 0.7178683385579937,
-            "uniqueID": 1715885965807,
-            "ioValues": [],
-            "readmeText": "Circular-Pattern\n\nTopics : maslowcreate, maslowcreate-project, maslowcreate-action\nGitHub Repo : https://github.com/alzatin/Circular-Pattern\n\n@input {geometry} Shape - Replicad Geometry\n@input {number} Count - Number of times geometry will be repeated\n@input {number} Radius- Radius of circle around which the pattern will be created\n\n - Might update it to include assemblies and sketches.\n\n",
-            "global": true
-        },
         {
             "atomType": "Output",
             "name": "Output",
             "x": 0.98,
             "y": 0.5,
-            "uniqueID": 523099,
+            "uniqueID": 1720547275110,
             "ioValues": [
                 {
                     "name": "number or geometry",
-                    "ioValue": 483499
+                    "ioValue": 1720547306065
                 }
             ]
         },
         {
             "atomType": "Circle",
             "name": "Circle",
-            "x": 0.2640067911714771,
-            "y": 0.8237082066869301,
-            "uniqueID": 1718566662498,
+            "x": 0.2853107344632768,
+            "y": 0.541033434650456,
+            "uniqueID": 1720547287125,
             "ioValues": [
                 {
                     "name": "diameter",
-                    "ioValue": 10
+                    "ioValue": 9
                 }
             ]
         },
         {
-            "atomType": "Join",
-            "name": "Assembly",
-            "x": 0.5398981324278438,
-            "y": 0.7416413373860182,
-            "uniqueID": 1721752212012,
+            "atomType": "Extrude",
+            "name": "Extrude",
+            "x": 0.5696798493408662,
+            "y": 0.4194528875379939,
+            "uniqueID": 1720547306065,
             "ioValues": [
                 {
-                    "name": "3D shape 1",
-                    "ioValue": 1718566662498
-                }
-            ],
-            "unionType": "Assembly"
-        },
-        {
-            "atomType": "Molecule",
-            "name": "Molecule",
-            "x": 0.4057724957555178,
-            "y": 0.24620060790273554,
-            "uniqueID": 1722011137108,
-            "ioValues": [
-                {
-                    "name": "shape",
-                    "ioValue": 10
+                    "name": "geometry",
+                    "ioValue": 1720547287125
                 },
                 {
-                    "name": "count",
-                    "ioValue": 10
-                },
-                {
-                    "name": "radius",
+                    "name": "height",
                     "ioValue": 10
                 }
-            ],
-            "topLevel": false,
-            "allAtoms": [
-                {
-                    "atomType": "Output",
-                    "name": "Output",
-                    "x": 0.98,
-                    "y": 0.5,
-                    "uniqueID": 1722011136792,
-                    "ioValues": [
-                        {
-                            "name": "number or geometry",
-                            "ioValue": 1722011140724
-                        }
-                    ]
-                },
-                {
-                    "atomType": "Input",
-                    "name": "shape",
-                    "x": 0.013333333333333334,
-                    "y": 0.34169278996865204,
-                    "uniqueID": 1722011136889,
-                    "ioValues": []
-                },
-                {
-                    "atomType": "Input",
-                    "name": "count",
-                    "x": 0.013333333333333334,
-                    "y": 0.47648902821316613,
-                    "uniqueID": 1722011137224,
-                    "ioValues": []
-                },
-                {
-                    "atomType": "Input",
-                    "name": "radius",
-                    "x": 0.013333333333333334,
-                    "y": 0.7523510971786834,
-                    "uniqueID": 1722011137085,
-                    "ioValues": []
-                },
-                {
-                    "atomType": "Circle",
-                    "name": "Circle",
-                    "x": 0.37181663837011886,
-                    "y": 0.5045592705167173,
-                    "uniqueID": 1722011140724,
-                    "ioValues": [
-                        {
-                            "name": "diameter",
-                            "ioValue": 10
-                        }
-                    ]
-                }
-            ],
-            "allConnectors": [
-                {
-                    "ap1Name": "geometry",
-                    "ap2Name": "number or geometry",
-                    "ap2Primary": false,
-                    "ap1ID": 1722011140724,
-                    "ap2ID": 1722011136792
-                }
-            ],
-            "fileTypeVersion": 1,
-            "compiledBom": []
+            ]
         }
     ],
     "allConnectors": [
         {
-            "ap1Name": "number or geometry",
-            "ap2Name": "inputID",
-            "ap2Primary": false,
-            "ap1ID": 540620,
-            "ap2ID": 483499
-        },
-        {
-            "ap1Name": "number or geometry",
-            "ap2Name": "count",
-            "ap2Primary": false,
-            "ap1ID": 744449,
-            "ap2ID": 483499
+            "ap1Name": "geometry",
+            "ap2Name": "geometry",
+            "ap2Primary": true,
+            "ap1ID": 1720547287125,
+            "ap2ID": 1720547306065
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "number or geometry",
             "ap2Primary": false,
-            "ap1ID": 483499,
-            "ap2ID": 523099
-        },
-        {
-            "ap1Name": "number or geometry",
-            "ap2Name": "radius",
-            "ap2Primary": false,
-            "ap1ID": 368635,
-            "ap2ID": 483499
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "3D shape 1",
-            "ap2Primary": false,
-            "ap1ID": 1718566662498,
-            "ap2ID": 1721752212012
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "backUpShape",
-            "ap2Primary": false,
-            "ap1ID": 1721752212012,
-            "ap2ID": 483499
+            "ap1ID": 1720547306065,
+            "ap2ID": 1720547275110
         }
     ],
+    "unitsKey": "MM",
     "fileTypeVersion": 1,
     "compiledBom": [],
     "filetypeVersion": 1
